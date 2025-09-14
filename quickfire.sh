@@ -23,5 +23,5 @@ args=(
 for arg in "${args[@]}"; do
     echo "Executing command with argument: $arg"
     # Replace 'command' with your command and "$arg" as its argument
-    $1 "$arg"
+    valgrind --leak-check=full --leak-resolution=high -s --track-origins=yes --track-fds=yes --show-leak-kinds=all "$1" "$arg" 2>>err.log
 done
